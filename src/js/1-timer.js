@@ -69,10 +69,11 @@ function updateTimer() {
   const userSelectedTime = userSelectedDate.getTime();
   const timeLeft = userSelectedTime - currentTime;
 
-  if (timeLeft <= 0) {
+  if (timeLeft <= 1000) {
     clearInterval(timerIntervalId);
     updateDisplay(0);
-    inputDateTimePickerEl.removeAttribute('disabled');
+    inputDate.removeAttribute('disabled');
+    startBtn.removeAttribute('disabled');
   } else {
     updateDisplay(timeLeft);
   }

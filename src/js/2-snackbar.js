@@ -29,16 +29,18 @@ function handleSubmit(event) {
         message: `❌ Rejected promise in ${delay}ms`,
       });
     });
+
+  form.reset();
 }
 
 function createNotification(delay, state) {
   return new Promise((resolve, reject) => {
-    if (state === 'fulfilled') {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (state === 'fulfilled') {
         resolve(delay);
-      }, delay);
-    } else if (state === 'rejected') {
-      reject(delay);
-    }
+      } else {
+        reject(delay);
+      }
+    }, delay);
   });
 }
